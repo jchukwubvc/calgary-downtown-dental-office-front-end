@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (max-width: 768px) {
+  .home .home-container {
+    padding-top: 10px;
+    margin-left: 20px;
+    width: 90%;
+  }
+  .home-container h2 {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .home-container h1 {
+    font-size: 2.5rem;
+    padding-top: 10px;
+    line-height: 42px;
+  }
+  .home-container p {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .home-container form {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    padding: 30px;
+    background-color: hsl(0, 0%, 100%);
+  }
+  .home-container input {
+    padding: 20px;
+  }
+  .home-container Button {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    height: 74rem;
+    padding-top: 50px;
+  }
+
+  .home figure {
+    height: 10rem;
+    width: 20rem;
+    padding-top: 10px;
+    margin-left: 20px;
+  }
+  .service-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card .banner {
+    display: none;
+  }
+  .service-card div {
+    margin-left: -8px;
+    width: 18rem;
+    padding: -2px 8px;
+  }
+  .service-container h2 {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .service-container h1 {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  /* About */
+
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .about figure img {
+    height: 20rem;
+    width: 18rem;
+  }
+  .about figure {
+    margin-left: 32px;
+  }
+  .about-container {
+    margin-left: 32px;
+  }
+  .about-container h2 {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .about-container h1 {
+    font-size: 43px;
+    width: 50%;
+    line-height: 43px;
+  }
+  .about-container p {
+    width: 55%;
+  }
+
+  /* Testimony */
+
+  .testimony-head h2 {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .testimony-head h1 {
+    font-size: 43px;
+    line-height: 44px;
+  }
+  .testimony-box {
+    width: 15rem;
+    height: 30rem;
+    margin-left: 65px;
+    overflow-x: scroll;
+    transition: all 0.6s;
+    display: flex;
+    gap: 5px;
+    scroll-snap-type: inline mandatory;
+  }
+  .testimony-box .testimony-card {
+    margin-left: 5px;
+    position: relative;
+    height: 26rem;
+    padding-right: 30px;
+    transition: all 0.3s;
+    min-width: 100%;
+    scroll-snap-align: start;
+  }
+
+  .testimony-box::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .testimony-box::-webkit-scrollbar-track {
+    background-color: hsl(0, 0%, 84%);
+    border-radius: 5px;
+  }
+  .testimony-box::-webkit-scrollbar-thumb {
+    background-color: hsl(225, 68%, 53%);
+    border-radius: 5px;
+    width: 15%;
+  }
+  .testimony-box::-webkit-scrollbar-button {
+    width: calc(25% - 30px);
+  }
+
+  /* APPOINTMENT*/
+
+  .appointment {
+    display: flex;
+    flex-direction: column;
+    height: 46rem;
+    gap: 5px;
+  }
+  .appointment figure {
+    margin-left: 15px;
+    padding-top: 80px;
+  }
+  .appointment figure img {
+    height: 20rem;
+    width: 20rem;
+  }
+  .appointment-box {
+    padding-top: 20px;
+    margin-left: 25px;
+  }
+  .appointment-box h1:nth-child(1) {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .appointment-box h1:nth-child(2) {
+    font-size: 30px;
+    width: 48%;
+    line-height: 34px;
+  }
+
+  /* BLOG */
+  .blog-home {
+    background-color: hsl(0, 0%, 98%);
+  }
+  .blog h2 {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .blog-box {
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 98%);
+  }
+  .blog-box .blog-card {
+    width: 20rem;
+    margin-left: 20px;
+    background-color: hsl(0, 0%, 100%);
+  }
+  .blog-box .blog-card h1 {
+    font-size: 25px;
+  }
+
+  /* FOOTER */
+
+  .subfooter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 85rem;
+  }
+  .subfooter-head {
+    margin-left: 20px;
+  }
+  .subfooter-head p {
+    width: 100%;
+  }
+  .subfooter ul {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .subfooter-card {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .contact {
+    margin-left: 20px;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+  }
+  .footer div:nth-child(1) p {
+    font-size: 20px;
+    margin-left: -25px;
+  }
+  .footer div:nth-child(2) {
+    margin-left: 85px;
+    padding-bottom: 35px;
+  }
+}

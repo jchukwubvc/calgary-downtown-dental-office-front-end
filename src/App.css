@@ -1,0 +1,6 @@
+@media (max-width: 768px) {
+  .home-container {
+    padding-top: 10px;
+    margin-left: 20px;
+  }
+}
