@@ -9,7 +9,7 @@ import banner from "../Assets/service-banner.png";
 
 export const Service = () => {
   return (
-    <section>
+    <section id ="services">
       <div className="text-center pt-20 service-container">
         <h2 className="text-2xl text-royal_blue font-bold uppercase">
           Our Services

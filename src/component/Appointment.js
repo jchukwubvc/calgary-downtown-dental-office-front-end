@@ -10,7 +10,7 @@ const Appointment = () => {
       </figure>
       <div className="pt-36 w-[33rem] appointment-box">
         <h1 className="text-3xl text-royal_blue font-bold">
-          Book Dentail Appointment
+          Book Dental Appointment
         </h1>
         <h1 className="text-5xl text-white font-extrabold pt-3">
           We Are open And Welcoming Patients

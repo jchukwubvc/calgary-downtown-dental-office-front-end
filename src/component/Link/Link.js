@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../Button";
+import { Link as ScrollLink } from 'react-scroll';
+
 
 const LinkBar = () => {
   return (
@@ -10,16 +12,17 @@ const LinkBar = () => {
         </li>
 
         <li className="font-bold text-oxford_blue cursor-pointer  hover:text-royal_blue">
-          Services
+          <ScrollLink to="services" smooth={true} duration={500}>Services</ScrollLink>
+        </li>
+
+        <li className="font-bold text-oxford_blue cursor-pointer hover:text-royal_blue">
+          <ScrollLink to="about-us" smooth={true} duration={500}>About Us</ScrollLink>
         </li>
         <li className="font-bold text-oxford_blue cursor-pointer hover:text-royal_blue">
-          About Us
+          <ScrollLink to="blog" smooth={true} duration={500}>Blog</ScrollLink>
         </li>
         <li className="font-bold text-oxford_blue cursor-pointer hover:text-royal_blue">
-          Blog
-        </li>
-        <li className="font-bold text-oxford_blue cursor-pointer hover:text-royal_blue">
-          Contact
+          <ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink>
         </li>
       </ul>
       <Button text="BOOK APPOINTMENT" />

@@ -4,7 +4,7 @@ import about_img from "../Assets/about-banner.png";
 
 const About = () => {
   return (
-    <section className="flex content-center gap-20 mt-36 about">
+    <section id="about-us" className="flex content-center gap-20 mt-36 about">
       <figure className="ml-32">
         <img src={about_img} alt="" className="h-[35rem] w-[30rem]" />
       </figure>

@@ -6,7 +6,7 @@ import blog3 from "../Assets/blog-3.jpg";
 
 const Blog = () => {
   return (
-    <section className="mt-40 blog-home">
+    <section id="blog" className="mt-40 blog-home">
       <div className="text-center blog">
         <h1 className="text-2xl text-royal_blue font-bold uppercase">
           OUR BLOG
