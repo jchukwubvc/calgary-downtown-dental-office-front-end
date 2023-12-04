@@ -15,6 +15,11 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build/
     
   deploy:
     needs: build
@@ -24,6 +29,11 @@ jobs:
       BUCKET_NAME: clcm3102-group1-dental-office-production-frontend
     steps:
       - uses: actions/checkout@v3
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
