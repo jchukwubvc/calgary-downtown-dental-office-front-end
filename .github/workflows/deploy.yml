@@ -1,0 +1,26 @@
+name: Deploy frontend to AWS S3
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: us-east-1
+      BUCKET_NAME: clcm3102-group1-dental-office-production-frontend
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Frontend
+        run: npm run build
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Deploy
+        run: aws s3 cp ./build/ s3://${BUCKET_NAME} --recursive
