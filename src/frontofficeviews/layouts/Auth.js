@@ -18,7 +18,7 @@
 import React from "react";
 import { useLocation, Route, Routes, Navigate } from "react-router-dom";
 // reactstrap components
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row } from "reactstrap";
 
 // core components
 import AuthNavbar from "frontofficeviews/components/Navbars/AuthNavbar.js";
@@ -26,7 +26,7 @@ import AuthFooter from "frontofficeviews/components/Footers/AuthFooter.js";
 
 import routes from "frontofficeviews/routes.js";
 
-const Auth = (props) => {
+const Auth = () => {
   const mainContent = React.useRef(null);
   const location = useLocation();
 
