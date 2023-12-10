@@ -18,7 +18,7 @@
 /*eslint-disable*/
 
 // reactstrap components
-import { NavItem, NavLink, Nav, Container, Row, Col } from "reactstrap";
+import {  Container, Row} from "reactstrap";
 
 const Login = () => {
   return (

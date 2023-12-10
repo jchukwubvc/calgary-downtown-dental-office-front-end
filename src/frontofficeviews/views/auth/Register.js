@@ -27,7 +27,6 @@ import {
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-  Row,
   Col,
 } from "reactstrap";
 import {useState} from "react";
@@ -65,7 +64,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch(`${apiEndpoint}/patients`, {
+      const apiresponse = await fetch(`${apiEndpoint}/patients`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,24 +74,28 @@ const Register = () => {
       });
 
       // Handle 4xx and 5xx errors
-      if (!response.ok) {
-        const errorData = await response.json();
+      if (!apiresponse.ok) {
+        const errorData = await apiresponse.json();
         setError(`Error: ${errorData.message}`);
         return;
       }
 
       // If successful 2xx response
-      const responseData = await response.json();
+      const responseData = await apiresponse.json();
       setResponse(responseData);
       setError(null);
 
       alert("Account creation successful. Proceeding to Login...")
 
+      console.log(JSON.stringify(response))
+
       navigate('/auth/login');
 
       // Do something with the successful response data, e.g., redirect, show success message, etc.
-    } catch (error) {
+    } catch (apierror) {
       setError('An error occurred while processing your request');
+      console.log(JSON.stringify(error))
+      console.log(JSON.stringify(apierror))
     }
   };
 

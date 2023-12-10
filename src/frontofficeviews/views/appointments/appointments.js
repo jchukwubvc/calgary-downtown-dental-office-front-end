@@ -13,18 +13,18 @@ import {
 } from "reactstrap";
 
 import React, {useCallback, useEffect, useState} from 'react';
-import {getUserToken, useAuth} from '../../components/AuthContext'
+import {getUserToken} from '../../components/AuthContext'
 
 import MyUtil from "../../../util";
 
-const Appointments = (props) =>{
+const Appointments = () =>{
 
     const AppointmentsContext = React.createContext();
     const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
     const [appointments, setAppointments] = useState([]);
     const [locationList, setLocationList] = useState([]);
     const [dentistList, setDentistList] = useState([]);
-    const [userInfo, setUserInfo] = useState(getUserToken());
+    const [userInfo] = useState(getUserToken());
     const [isModalOpen, setModalOpen] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState('');
     const [selectedDentist, setSelectedDentist] = useState('');
@@ -36,17 +36,12 @@ const Appointments = (props) =>{
         status: '',
     });
 
-    const GET_OFFICES_URL = `${apiEndpoint}/offices`;
-    const GET_DENTISTS_URL = `${apiEndpoint}/dentists`;
-    const CREATE_PATIENT_APPOINTMENTS_URL = `${apiEndpoint}/offices/${selectedLocation}/booking`;
-    const GET_PATIENT_APPOINTMENTS_URL = `${apiEndpoint}/patients/${userInfo.id}/bookings`;
-
 
 
     // Fetch appointments from the API
     const fetchAppointments = async () => {
         try {
-            const response = await fetch(GET_PATIENT_APPOINTMENTS_URL);
+            const response = await fetch(`${apiEndpoint}/patients/${userInfo.id}/bookings`);
             const data = await response.json();
             setAppointments(data);
         } catch (error) {
@@ -60,7 +55,7 @@ const Appointments = (props) =>{
 
         const fetchAppointments = async () => {
             try {
-                const response = await fetch(GET_PATIENT_APPOINTMENTS_URL);
+                const response = await fetch(`${apiEndpoint}/patients/${userInfo.id}/bookings`);
                 const data = await response.json();
                 setAppointments(data);
             } catch (error) {
@@ -69,7 +64,7 @@ const Appointments = (props) =>{
         };
         const fetchLocationList = async () => {
             try {
-                const response = await fetch(GET_OFFICES_URL);
+                const response = await fetch(`${apiEndpoint}/offices`);
                 const data = await response.json();
                 setLocationList(data);
             } catch (error) {
@@ -78,7 +73,7 @@ const Appointments = (props) =>{
         };
         const fetchDentistsList = async () => {
             try {
-                const response = await fetch(GET_DENTISTS_URL);
+                const response = await fetch(`${apiEndpoint}/dentists`);
                 const data = await response.json();
                 setDentistList(data);
             } catch (error) {
@@ -141,7 +136,7 @@ const Appointments = (props) =>{
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch(CREATE_PATIENT_APPOINTMENTS_URL, {
+            const response = await fetch(`${apiEndpoint}/offices/${selectedLocation}/booking`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
