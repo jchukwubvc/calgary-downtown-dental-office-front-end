@@ -45,10 +45,8 @@ const Profile = () => {
     // Prepare the request body
     const requestBody = {
       name,
-      password,
       address,
       phone,
-      email,
       medical_history: medicalHistory,
       insurance_provider: insuranceProvider,
       insurance_number: insuranceNumber,
@@ -57,7 +55,7 @@ const Profile = () => {
 
     // Perform API call to update patient information
     fetch(`${apiEndpoint}/patients/${userInfo.id}`, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
@@ -126,6 +124,7 @@ const Profile = () => {
                             id="input-password"
                             placeholder="Password"
                             type="password"
+                            readOnly
                         />
                       </FormGroup>
                     </Col>
@@ -177,6 +176,7 @@ const Profile = () => {
                             id="input-email"
                             placeholder="Email"
                             type="email"
+                            readOnly
                         />
                       </FormGroup>
                     </Col>
