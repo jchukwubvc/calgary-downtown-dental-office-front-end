@@ -1,9 +1,17 @@
 import React from "react";
-import Button from "../Button";
 import { Link as ScrollLink } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const LinkBar = () => {
+    const navigate = useNavigate();
+
+    const goToLoginPage = () => {
+      // Navigate to the "/other" route when the button is clicked
+      navigate('/auth/login');
+    };
+
   return (
     <nav className="lg:flex lg:gap-8 hidden">
       <ul className="flex flex-row gap-8 pt-3">
@@ -25,7 +33,13 @@ const LinkBar = () => {
           <ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink>
         </li>
       </ul>
-      <Button text="BOOK APPOINTMENT" />
+      <button
+          onClick={goToLoginPage}
+          className="bg-gradient-to-tr from-carolina_blue to-royal_blue
+      hover:bg-gradient-to-tl from-carolina_blue to-royal_blue cursor-pointer py-4
+      px-6 rounded-sm text-white text-[18px] font-bold text-opacity-[0.8]">
+        Book Appointment
+      </button>
     </nav>
   );
 };
