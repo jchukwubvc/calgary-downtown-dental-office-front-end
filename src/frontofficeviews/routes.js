@@ -21,11 +21,12 @@ import Login from "./views/auth/Login.js";
 import Appointments from "./views/appointments/appointments";
 import Office from "./views/offices/offices";
 import Profile from "./views/profile/Profile";
+import Dentist from "./views/dentists/dentist";
 
 var routes = [
   {
     path: "/index",
-    name: "Dashboard",
+    name: "Dental App",
     icon: "ni ni-tv-2 text-primary",
     component: <Dashboard />,
     layout: "/admin",
@@ -42,6 +43,13 @@ var routes = [
     name: "Office Locations",
     icon: "fa fa-building text-primary",
     component: <Office />,
+    layout: "/admin",
+  },
+  {
+    path: "/dentists",
+    name: "Dentists",
+    icon: "fa fa-user-doctor text-primary",
+    component: <Dentist />,
     layout: "/admin",
   },
   {

@@ -16,9 +16,11 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {getUserToken} from '../../components/AuthContext'
 
 import MyUtil from "../../../util";
+import {useNavigate} from "react-router-dom";
 
 const Appointments = () =>{
 
+    const navigate = useNavigate();
     const AppointmentsContext = React.createContext();
     const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
     const [appointments, setAppointments] = useState([]);
@@ -193,6 +195,10 @@ const Appointments = () =>{
         }
     };
 
+    const goToDashboard= ()=>{
+        navigate('/admin/index');
+    }
+
 
 
     return (
@@ -200,6 +206,11 @@ const Appointments = () =>{
             <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
                 <Container fluid>
                     <div className="header-body">
+                        <button onClick={goToDashboard}>
+                            <span className="btn btn-outline-white btn-sm" >
+                                <i className="fas fa-arrow-left" /> Go Back
+                            </span>
+                        </button>
                     </div>
                 </Container>
             </div>

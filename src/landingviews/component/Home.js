@@ -17,14 +17,6 @@ export const Home = () => {
           Nestled in the heart of Calgary's vibrant downtown, our state-of-the-art dental practice is dedicated to providing
           exceptional dental care in a warm and welcoming environment.
         </p>
-        <form action="" className="inline-flex pt-12">
-          <input
-            type="text"
-            className="px-20 bg-hero"
-            placeholder="Enter your email..."
-          />
-          <Button text="GET CALL BACK" />
-        </form>
       </div>
       <figure className="pt-[10rem] h-[35rem] w-[35rem]">
         <img src={Hero_Banner} alt="hero-banner" />
