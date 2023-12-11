@@ -39,6 +39,7 @@ const AdminNavbar = (props) => {
 
   const logOutUser = () =>{
     clearUserToken();
+    navigate('/auth/login');
   }
 
   return (
