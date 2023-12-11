@@ -8,7 +8,8 @@ import {
   CardTitle,
 } from "reactstrap";
 
-import { getUserToken } from "../components/AuthContext";
+import {clearUserToken, getUserToken} from "../components/AuthContext";
+import {useNavigate} from "react-router-dom";
 
 const Dashboard = (props) => {
 
@@ -17,6 +18,7 @@ const Dashboard = (props) => {
   const [dentistCount, setDentistCount] = useState(0);
   const [officeCount, setOfficeCount] = useState(0);
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Function to fetch data from the API and update state
@@ -47,6 +49,26 @@ const Dashboard = (props) => {
     fetchDashboardData();
   }, [userInfo.id]);
 
+  const goToAppointments = ()=>{
+    navigate('/admin/appointments');
+  }
+
+  const goToOffices = ()=>{
+    navigate('/admin/offices');
+  }
+
+  const goToProfile = ()=>{
+    navigate('/admin/profile');
+  }
+
+  const goToDentists= ()=>{
+    navigate('/admin/dentists');
+  }
+  const logOutUser = () =>{
+    clearUserToken();
+    navigate('/auth/login');
+  }
+
   return (
       <>
         <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
@@ -54,7 +76,7 @@ const Dashboard = (props) => {
             <div className="header-body">
               {/* Card stats */}
               <Row>
-                <Col lg="6" xl="4">
+                <Col lg="6" xl="6">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                       <Row>
@@ -78,10 +100,15 @@ const Dashboard = (props) => {
                           </div>
                         </Col>
                       </Row>
+                      <button className="btn btn-outline-info btn-sm float-right mt-2"
+                      onClick={goToAppointments}
+                      >
+                        See all
+                      </button>
                     </CardBody>
                   </Card>
                 </Col>
-                <Col lg="6" xl="4">
+                <Col lg="6" xl="6">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                       <Row>
@@ -105,10 +132,19 @@ const Dashboard = (props) => {
                           </div>
                         </Col>
                       </Row>
+                      <button className="btn btn-outline-info btn-sm float-right mt-2"
+                              onClick={goToDentists}
+                      >
+                        See all
+                      </button>
                     </CardBody>
                   </Card>
                 </Col>
-                <Col lg="6" xl="4">
+
+              </Row>
+
+              <Row className="mt-5">
+                <Col lg="6" xl="6">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                       <Row>
@@ -132,10 +168,47 @@ const Dashboard = (props) => {
                           </div>
                         </Col>
                       </Row>
+                      <button className="btn btn-outline-info btn-sm float-right mt-2"
+                              onClick={goToOffices}
+                      >
+                        See all
+                      </button>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col lg="6" xl="6">
+                  <Card className="card-stats mb-4 mb-xl-0">
+                    <CardBody>
+                      <Row>
+                        <div className="col">
+                          <CardTitle
+                              tag="h5"
+                              className="text-uppercase text-muted mb-0"
+                          >
+                            My Profile
+                          </CardTitle>
+                        </div>
+                        <Col className="col-auto">
+                          <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                            <i className="fas fa-user-alt" />
+                          </div>
+                        </Col>
+                      </Row>
+                      <button className="btn btn-outline-info btn-sm float-right mt-2"
+                              onClick={goToProfile}
+                      >
+                        View
+                      </button>
                     </CardBody>
                   </Card>
                 </Col>
               </Row>
+            </div>
+            <div>
+              <button onClick={logOutUser}
+                  className="btn btn-outline-white mt-5 float-right">
+                Log out
+              </button>
             </div>
           </Container>
         </div>

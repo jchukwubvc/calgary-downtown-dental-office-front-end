@@ -3,26 +3,26 @@ import {Card, CardHeader, Col, Container, Row, Table} from 'reactstrap';
 import MyUtil from "../../../util";
 import {useNavigate} from "react-router-dom";
 
-const Office = () => {
+const Dentist = () => {
     const navigate = useNavigate();
-    const [offices, setOffices] = useState([]);
+    const [dentists, setDentists] = useState([]);
 
     const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
-    const GET_OFFICES_URL = `${apiEndpoint}/offices`;
+    const GET_DENTISTS_URL = `${apiEndpoint}/dentists`;
 
     useEffect(() => {
         // Fetch data from the API
-        const fetchOffices = async () => {
+        const fetchDentists = async () => {
             try {
-                const response = await fetch(GET_OFFICES_URL);
+                const response = await fetch(GET_DENTISTS_URL);
                 const data = await response.json();
-                setOffices(data);
+                setDentists(data);
             } catch (error) {
-                console.error('Error fetching offices:', error);
+                console.error('Error fetching dentists:', error);
             }
         };
 
-        fetchOffices();
+        fetchDentists();
     }, []);
 
     const goToDashboard= ()=>{
@@ -51,7 +51,7 @@ const Office = () => {
                             <CardHeader className="border-0">
                                 <Row className="align-items-center">
                                     <div className="col">
-                                        <h3 className="mb-0">Our Available Office Locations</h3>
+                                        <h3 className="mb-0">Our Available Dentists</h3>
                                     </div>
                                 </Row>
                             </CardHeader>
@@ -59,20 +59,18 @@ const Office = () => {
                                 <thead className="thead-light">
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Office Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Created On</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Expertise</th>
+                                    <th scope="col">Joined On</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {offices.map((office) => (
-                                    <tr key={office.id}>
-                                        <th>{office.id}</th>
-                                        <th>{office.name}</th>
-                                        <th>{office.description}</th>
-                                        <th>{office.address}</th>
-                                        <th>{MyUtil.formatDateTime(office.created_at)}</th>
+                                {dentists.map((dentist) => (
+                                    <tr key={dentist.id}>
+                                        <th>{dentist.id}</th>
+                                        <th>{dentist.name}</th>
+                                        <th>{dentist.expertise}</th>
+                                        <th>{MyUtil.formatDateTime(dentist.created_at)}</th>
                                     </tr>
                                 ))}
                                 </tbody>
@@ -87,4 +85,4 @@ const Office = () => {
     );
 };
 
-export default Office;
+export default Dentist;

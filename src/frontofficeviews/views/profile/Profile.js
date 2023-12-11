@@ -75,11 +75,22 @@ const Profile = () => {
         });
   };
 
+  const goToDashboard= ()=>{
+    navigate('/admin/index');
+  }
+
+
   return (
     <>
       <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
         <Container fluid>
-          <div className="header-body"></div>
+          <div className="header-body">
+            <button onClick={goToDashboard}>
+                            <span className="btn btn-outline-white btn-sm" >
+                                <i className="fas fa-arrow-left" /> Go Back
+                            </span>
+            </button>
+          </div>
         </Container>
       </div>
 

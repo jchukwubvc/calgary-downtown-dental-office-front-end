@@ -14,7 +14,7 @@ const Header = () => {
           <span className=" text-royal_blue pt-1">
             <AiOutlineMail />
           </span>
-          abc@example.com
+          help@dentol.com
         </li>
         <li className="text-white text-opacity-[0.9] flex flex-row content-center justify-center gap-1 pt-1">
           <span className=" text-royal_blue pt-1">
