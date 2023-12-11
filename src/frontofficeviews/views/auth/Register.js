@@ -175,7 +175,7 @@ const Register = () => {
 
               <div onClick={goToLogin} className="text-center mt-4">
                 <span className="text-muted" style={loginLinkStyle}>
-                  Already have an account. Click to Login
+                  Already have an account ? Click to Login
                 </span>
               </div>
             </Form>

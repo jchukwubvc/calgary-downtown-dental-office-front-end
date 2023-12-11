@@ -154,7 +154,7 @@ const Login = () => {
               </div>
               <div onClick={goToRegister} className="text-center">
                 <span className="text-muted" style={registerLinkStyle}>
-                  Don't have an account. Create a new one
+                  Don't have an account ? Create a new one
                 </span>
               </div>
             </Form>

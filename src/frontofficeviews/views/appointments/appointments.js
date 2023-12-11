@@ -36,6 +36,8 @@ const Appointments = () =>{
         booking_id: '',
         booked_time: '',
         status: '',
+        office: '',
+        dentist: '',
     });
 
 
@@ -93,6 +95,11 @@ const Appointments = () =>{
         return location ? location.name : 'Unknown';
     };
 
+    const getDentistName = (dentistId) => {
+        const dentist = dentistList.find((dentist) => dentist.id === dentistId);
+        return dentist ? dentist.name : 'Unknown';
+    };
+
     const openModal = () => {
         console.log("set to true")
         setModalOpen(true);
@@ -111,6 +118,8 @@ const Appointments = () =>{
             booking_id: appointment.id,
             booked_time: appointment.booked_time,
             status: appointment.status,
+            office: appointment.office_id,
+            dentist: appointment.dentist_id
         });
     };
 
@@ -170,7 +179,7 @@ const Appointments = () =>{
 
     const handleEditSubmit = async () => {
         try {
-            const response = await fetch(`${apiEndpoint}/offices/${editAppointmentData.booking_id}/update_booking`, {
+            const response = await fetch(`${apiEndpoint}/offices/${editAppointmentData.office}/update_booking`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -197,6 +206,10 @@ const Appointments = () =>{
 
     const goToDashboard= ()=>{
         navigate('/admin/index');
+    }
+
+    const modalHeaderStyle =  {
+        background: "#10a6c8"
     }
 
 
@@ -239,6 +252,7 @@ const Appointments = () =>{
                                 <thead className="thead-light">
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">Dentist Name</th>
                                     <th scope="col">Office Name</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Appointment Date</th>
@@ -252,6 +266,7 @@ const Appointments = () =>{
                                 {appointments.map((appointment) => (
                                     <tr key={appointment.id}>
                                         <th>{appointment.id}</th>
+                                        <th>{getDentistName(appointment.dentist_id)}</th>
                                         <th>{getLocationName(appointment.office_id)}</th>
                                         <th>{appointment.status}</th>
                                         <th>{MyUtil.formatDateTime(appointment.booked_time)}</th>
@@ -272,7 +287,7 @@ const Appointments = () =>{
 
 
             <Modal isOpen={isModalOpen} toggle={closeModal}>
-                <ModalHeader>
+                <ModalHeader style={modalHeaderStyle}>
                     Create Appointment
                 </ModalHeader>
                 <ModalBody>
@@ -288,7 +303,7 @@ const Appointments = () =>{
                         </select>
                     </div>
 
-                    <div>
+                    <div className="mt-5">
                         <h4>Dentist:</h4>
                         <select value={selectedDentist} onChange={handleDentistChange}>
                             <option value="">Select Dentist</option>
@@ -312,17 +327,17 @@ const Appointments = () =>{
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={handleSubmit}>
+                    <Button color="success" onClick={handleSubmit}>
                         Submit
                     </Button>{' '}
-                    <Button color="secondary" onClick={closeModal}>
+                    <Button color="danger" onClick={closeModal}>
                         Cancel
                     </Button>
                 </ModalFooter>
             </Modal>
 
             <Modal isOpen={editModalOpen} toggle={closeEditModal}>
-                <ModalHeader>Edit Appointment</ModalHeader>
+                <ModalHeader style={modalHeaderStyle}>Edit Appointment</ModalHeader>
                 <ModalBody>
                     <div>
                         <h4>Dentist:</h4>
@@ -339,7 +354,7 @@ const Appointments = () =>{
                         </select>
                     </div>
 
-                    <div>
+                    <div className="mt-5">
                         <h4>Status:</h4>
                         <select
                             value={editAppointmentData.status}
@@ -361,10 +376,10 @@ const Appointments = () =>{
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={handleEditSubmit}>
+                    <Button color="success" onClick={handleEditSubmit}>
                         Submit
                     </Button>{' '}
-                    <Button color="secondary" onClick={closeEditModal}>
+                    <Button color="danger" onClick={closeEditModal}>
                         Cancel
                     </Button>
                 </ModalFooter>
