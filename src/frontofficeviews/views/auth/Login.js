@@ -42,6 +42,10 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const goToRegister = () => {
+    navigate('/auth/register')
+  }
+
   const handleLogin = async () => {
     // Check if email and password are provided
     if (!email || !password) {
@@ -92,6 +96,13 @@ const Login = () => {
     }
   };
 
+  const registerLinkStyle = {
+    fontSize: '13px',
+    color: '#607D8B',
+    textDecoration: 'underline',
+    cursor: 'pointer',
+    important: 'true', // Custom property to mimic !important
+  }
 
   return (
     <>
@@ -135,24 +146,16 @@ const Login = () => {
                   />
                 </InputGroup>
               </FormGroup>
-              <div className="custom-control custom-control-alternative custom-checkbox">
-                <input
-                  className="custom-control-input"
-                  id=" customCheckLogin"
-                  type="checkbox"
-                />
-                <label
-                  className="custom-control-label"
-                  htmlFor=" customCheckLogin"
-                >
-                  <span className="text-muted">Remember me</span>
-                </label>
-              </div>
               <div className="text-center">
                 <Button className="my-4" color="primary" type="button"
                         onClick={handleLogin}>
                   Sign in
                 </Button>
+              </div>
+              <div onClick={goToRegister} className="text-center">
+                <span className="text-muted" style={registerLinkStyle}>
+                  Don't have an account. Create a new one
+                </span>
               </div>
             </Form>
           </CardBody>

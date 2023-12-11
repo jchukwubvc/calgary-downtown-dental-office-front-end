@@ -36,6 +36,18 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  const loginLinkStyle = {
+    fontSize: '13px',
+    color: '#607D8B',
+    textDecoration: 'underline',
+    cursor: 'pointer',
+    important: 'true', // Custom property to mimic !important
+  }
+
+  const goToLogin = () => {
+    navigate('/auth/login')
+  }
+
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
   const apiToken = process.env.REACT_APP_API_TOKEN;
 
@@ -159,6 +171,12 @@ const Register = () => {
                 <Button className="mt-4" color="primary" type="submit">
                   Create account
                 </Button>
+              </div>
+
+              <div onClick={goToLogin} className="text-center mt-4">
+                <span className="text-muted" style={loginLinkStyle}>
+                  Already have an account. Click to Login
+                </span>
               </div>
             </Form>
           </CardBody>
